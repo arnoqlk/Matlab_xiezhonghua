@@ -1,0 +1,64 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>Double Spring Mass System</title>
+      <meta name="generator" content="MATLAB 7.8">
+      <meta name="date" content="2010-09-15">
+      <meta name="m-file" content="double_mass_spring">
+      <link rel="stylesheet" type="text/css" href="../../../../matlab/demos/private/style.css">
+   </head>
+   <body>
+      <div class="header">
+         <div class="left">double_mass_spring.mdl</div>
+         <div class="right"><a href="matlab:double_mass_spring">Open this model</a></div>
+      </div>
+      <div class="content">
+         <h1>Double Spring Mass System</h1>
+         <p>This system models a double spring-mass-damper system with a periodically varying forcing function.  Associated with the demo
+            is an animation function that will automatically open a figure window and display to it. In this system, the only sensor is
+            attached to the mass on the left, and the actuator is attached to the mass on the left. State estimation and LQR control are
+            used.
+         </p><img vspace="5" hspace="5" src="double_mass_spring_01.png" alt=""> <img vspace="5" hspace="5" src="double_mass_spring_02.png" alt=""> <p class="footer"><br>
+            Published with MATLAB&reg; 7.8
+         </p>
+         <p class="footer" id="trademarks">MATLAB and Simulink are registered trademarks of The MathWorks, Inc.  Please see <a href="http://www.mathworks.com/trademarks">www.mathworks.com/trademarks</a> for a list of other trademarks owned by The MathWorks, Inc.  Other product or brand names are trademarks or registered trademarks
+            of their respective owners.
+         </p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% Double Spring Mass System
+% 
+% This system models a double spring-mass-damper system with a periodically 
+% varying forcing function.  Associated with the demo is an animation function 
+% that will automatically open a figure window and display to it. In this system, 
+% the only sensor is attached to the mass on the left, and the actuator is 
+% attached to the mass on the left. State estimation and LQR control are used.
+
+clear all
+close all
+bdclose all
+
+%%
+
+open_system('double_mass_spring')
+evalc('sim(''double_mass_spring'')');
+
+%%
+
+clear all
+close all
+bdclose all
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

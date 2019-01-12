@@ -1,0 +1,161 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>MyYahoo</title>
+      <meta name="generator" content="MATLAB 7.8">
+      <meta name="date" content="2010-08-13">
+      <meta name="m-file" content="MyYahoo"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content"><pre class="codeinput"><span class="keyword">function</span> [stock_Price]=MyYahoo(StockName, StartDate, EndDate, Freq)
+
+<span class="comment">% This engine is used for a rapid searching in Yahoo!Finance for retriving</span>
+<span class="comment">% Financial Data.</span>
+
+startdate=StartDate;
+enddate=EndDate;
+
+ms=num2str(str2num(datestr(startdate, <span class="string">'mm'</span>))-1);
+ds=datestr(startdate, <span class="string">'dd'</span>);
+ys=datestr(startdate, <span class="string">'yyyy'</span>);
+me=num2str(str2num(datestr(enddate, <span class="string">'mm'</span>))-1);
+de=datestr(enddate, <span class="string">'dd'</span>);
+ye=datestr(enddate, <span class="string">'yyyy'</span>);
+
+url2Read=sprintf(<span class="string">'http://ichart.finance.yahoo.com/table.csv?s=%s&amp;a=%s&amp;b=%s&amp;c=%s&amp;d=%s&amp;e=%s&amp;f=%s&amp;g=%s&amp;ignore=.csv'</span>, StockName, ms, ds, ys, me, de, ye, Freq);
+s=urlread(url2Read);
+
+[Date Open High Low Close Volume AdjClose]=strread(s,<span class="string">'%s %s %s %s %s %s %s'</span>,<span class="string">'delimiter'</span>,<span class="string">','</span>);
+
+Date(1)=[];
+AdjClose(1)=[];
+
+row=size(Date, 1);
+<span class="keyword">for</span> i = 1:row
+
+    Date_temp(i, 1)=datenum(cell2mat(Date(i)), <span class="string">'yyyy-mm-dd'</span>);
+    AdjClose_temp(i, 1)=str2num(cell2mat(AdjClose(i)));
+
+<span class="keyword">end</span>
+
+stock_Price=[Date_temp, AdjClose_temp];
+
+root=[pwd, <span class="string">'\'</span>];
+filename=[root, StockName, <span class="string">'.mat'</span>];
+save(filename,  <span class="string">'stock_Price'</span>) ;
+
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Input argument "StartDate" is undefined.
+
+Error in ==&gt; MyYahoo at 6
+startdate=StartDate;
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.8<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+function [stock_Price]=MyYahoo(StockName, StartDate, EndDate, Freq)
+
+% This engine is used for a rapid searching in Yahoo!Finance for retriving
+% Financial Data. 
+
+startdate=StartDate;
+enddate=EndDate;
+
+ms=num2str(str2num(datestr(startdate, 'mm'))-1);
+ds=datestr(startdate, 'dd');
+ys=datestr(startdate, 'yyyy');
+me=num2str(str2num(datestr(enddate, 'mm'))-1);
+de=datestr(enddate, 'dd');
+ye=datestr(enddate, 'yyyy');
+
+url2Read=sprintf('http://ichart.finance.yahoo.com/table.csv?s=%s&a=%s&b=%s&c=%s&d=%s&e=%s&f=%s&g=%s&ignore=.csv', StockName, ms, ds, ys, me, de, ye, Freq);
+s=urlread(url2Read);
+                       
+[Date Open High Low Close Volume AdjClose]=strread(s,'%s %s %s %s %s %s %s','delimiter',',');
+
+Date(1)=[];
+AdjClose(1)=[];
+
+row=size(Date, 1);
+for i = 1:row
+    
+    Date_temp(i, 1)=datenum(cell2mat(Date(i)), 'yyyy-mm-dd');
+    AdjClose_temp(i, 1)=str2num(cell2mat(AdjClose(i)));
+
+end
+
+stock_Price=[Date_temp, AdjClose_temp];
+
+root=[pwd, '\'];
+filename=[root, StockName, '.mat'];
+save(filename,  'stock_Price') ;
+
+end
+##### SOURCE END #####
+-->
+   </body>
+</html>

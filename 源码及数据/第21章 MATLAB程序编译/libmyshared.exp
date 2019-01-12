@@ -1,0 +1,8 @@
+libmyshared.dll
+_libmysharedGetMcrID		_libmysharedGetMcrID
+_libmysharedInitialize		_libmysharedInitialize
+_libmysharedInitializeWithHandlers		_libmysharedInitializeWithHandlers
+_libmysharedPrintStackTrace		_libmysharedPrintStackTrace
+_libmysharedTerminate		_libmysharedTerminate
+_mlfEx21_3_1		_mlfEx21_3_1
+_mlxEx21_3_1		_mlxEx21_3_1

@@ -1,0 +1,11 @@
+addmatrix.dll
+_addmatrixInitialize		_addmatrixInitialize
+_addmatrixInitializeWithHandlers		_addmatrixInitializeWithHandlers
+_addmatrixPrintStackTrace		_addmatrixPrintStackTrace
+_addmatrixTerminate		_addmatrixTerminate
+_mlfAddmatrix		_mlfAddmatrix
+_mlfEigmatrix		_mlfEigmatrix
+_mlfMultiplymatrix		_mlfMultiplymatrix
+_mlxAddmatrix		_mlxAddmatrix
+_mlxEigmatrix		_mlxEigmatrix
+_mlxMultiplymatrix		_mlxMultiplymatrix
